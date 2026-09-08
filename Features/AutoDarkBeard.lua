@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO DARKBEARD (ជាមួយ Config Save) - FULL WITH SET
+-- AUTO DARKBEARD (NO CONFIG) - FULL
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -639,7 +639,7 @@ local function darkBeardLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (ជាមួយ Config Save)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoDarkBeard()
     isRunning = not isRunning
@@ -705,25 +705,12 @@ function _G.YOKUDO_ToggleAutoDarkBeard()
     if _G.YOKUDO_UpdateUI_DarkBeard then
         _G.YOKUDO_UpdateUI_DarkBeard(isRunning)
     end
-    
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoDarkBeard", isRunning)
-    end
-end
-
--- ==================================================
--- ⭐ SET FUNCTION (សម្រាប់ ConfigManager)
--- ==================================================
-function _G.YOKUDO_SetDarkBeard(enabled)
-    if enabled == isRunning then return end
-    _G.YOKUDO_ToggleAutoDarkBeard()
 end
 
 -- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_AutoDarkBeardEnabled = _G.YOKUDO_AutoDarkBeardEnabled or false
+_G.YOKUDO_AutoDarkBeardEnabled = false
 
 -- ==================================================
 -- CHARACTER RESPAWN HANDLER
@@ -736,4 +723,4 @@ Player.CharacterAdded:Connect(function()
     end
 end)
 
-print("✅ AutoDarkBeard Loaded (Config Ready - With Set)")
+print("✅ AutoDarkBeard Loaded (No Config)")
