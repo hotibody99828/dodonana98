@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO CLICK ATTACK LOOP (ជាមួយ Config Save)
+-- AUTO CLICK ATTACK LOOP (NO CONFIG)
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -207,7 +207,7 @@ local function clickAttackLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (ជាមួយ Config Save)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoClickAttack()
     _G.YOKUDO_AutoClickAttackEnabled = not _G.YOKUDO_AutoClickAttackEnabled
@@ -231,11 +231,11 @@ function _G.YOKUDO_ToggleAutoClickAttack()
     if _G.YOKUDO_UpdateUI_ClickAttack then
         _G.YOKUDO_UpdateUI_ClickAttack(_G.YOKUDO_AutoClickAttackEnabled)
     end
-    
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoClickAttack", _G.YOKUDO_AutoClickAttackEnabled)
-    end
 end
 
-print("✅ AutoClickAttack Loaded")
+-- ==================================================
+-- STATE
+-- ==================================================
+_G.YOKUDO_AutoClickAttackEnabled = false
+
+print("✅ AutoClickAttack Loaded (No Config)")
