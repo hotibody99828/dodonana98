@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO CORE (ជាមួយ Config Save) - WITH SET
+-- AUTO CORE (NO CONFIG) - FULL
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -409,7 +409,7 @@ local function coreLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoCore()
     isRunning = not isRunning
@@ -462,24 +462,12 @@ function _G.YOKUDO_ToggleAutoCore()
     if _G.YOKUDO_UpdateUI_Core then
         _G.YOKUDO_UpdateUI_Core(isRunning)
     end
-    
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoCore", isRunning)
-    end
-end
-
--- ==================================================
--- ⭐ SET FUNCTION
--- ==================================================
-function _G.YOKUDO_SetCore(enabled)
-    if enabled == isRunning then return end
-    _G.YOKUDO_ToggleAutoCore()
 end
 
 -- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_AutoCoreEnabled = _G.YOKUDO_AutoCoreEnabled or false
+_G.YOKUDO_AutoCoreEnabled = false
 
 -- ==================================================
 -- CHARACTER RESPAWN HANDLER
@@ -493,4 +481,4 @@ Player.CharacterAdded:Connect(function()
     end
 end)
 
-print("✅ AutoCore Loaded (Config Ready - With Set)")
+print("✅ AutoCore Loaded (No Config)")
