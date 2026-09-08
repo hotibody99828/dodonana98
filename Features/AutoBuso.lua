@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO BUSO HAKI (NO CONFIG) - START TRUE
+-- AUTO BUSO HAKI (NO CONFIG) - AUTO START ON
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -10,9 +10,9 @@ local workspace = game:GetService("Workspace")
 local Player = Players.LocalPlayer
 
 -- ==================================================
--- STATE
+-- STATE (កំណត់ true ដំបូង)
 -- ==================================================
-_G.YOKUDO_BusoEnabled = true  -- ← កែពី false មក true
+_G.YOKUDO_BusoEnabled = true
 _G.YOKUDO_BusoLoopConnection = nil
 _G.YOKUDO_BusoCharConnection = nil
 
@@ -48,16 +48,24 @@ end
 -- ==================================================
 function startAutoBuso()
     if _G.YOKUDO_BusoLoopConnection then return end
+    
+    -- Turn on Buso immediately
     TurnOnBuso()
+    
+    -- Loop to keep Buso on
     _G.YOKUDO_BusoLoopConnection = RunService.Stepped:Connect(function()
         if not _G.YOKUDO_BusoEnabled then return end
         if not IsBusoOn() then
             TurnOnBuso()
         end
     end)
+    
+    -- Restart on respawn
     _G.YOKUDO_BusoCharConnection = Player.CharacterAdded:Connect(function()
         task.wait(0.5)
-        if _G.YOKUDO_BusoEnabled then TurnOnBuso() end
+        if _G.YOKUDO_BusoEnabled then 
+            TurnOnBuso() 
+        end
     end)
 end
 
@@ -76,7 +84,7 @@ function stopAutoBuso()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (គ្មាន Config)
+-- TOGGLE FUNCTION (សម្រាប់ User ចុច)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoBuso()
     _G.YOKUDO_BusoEnabled = not _G.YOKUDO_BusoEnabled
@@ -89,26 +97,34 @@ function _G.YOKUDO_ToggleAutoBuso()
         print("❌ Auto Buso: OFF")
     end
     
+    -- Update UI
     if _G.YOKUDO_UpdateUI_Buso then
         _G.YOKUDO_UpdateUI_Buso(_G.YOKUDO_BusoEnabled)
     end
 end
 
 -- ==================================================
--- ⭐ START BUSO ON LOAD (ចាប់ផ្ដើមភ្លាមៗ)
+-- ⭐ AUTO START (ចាប់ផ្ដើមភ្លាមៗ)
 -- ==================================================
 task.spawn(function()
-    -- រង់ចាំ Game Loaded
-    task.wait(1)
+    -- រង់ចាំ Character Loaded
+    repeat task.wait() until Player.Character and Player.Character:FindFirstChild("HumanoidRootPart")
+    
+    -- ចាប់ផ្ដើម Auto Buso
     if _G.YOKUDO_BusoEnabled then
         startAutoBuso()
-        print("✅ Auto Buso started automatically")
+        print("✅ Auto Buso started automatically (ON)")
     end
 end)
 
 -- ==================================================
--- STATE
+-- UPDATE UI STATE (ឲ្យ UI បង្ហាញ ON)
 -- ==================================================
-_G.YOKUDO_BusoEnabled = true  -- ← កំណត់ម្ដងទៀតសម្រាប់អ្នកដទៃ
+task.spawn(function()
+    task.wait(0.5)
+    if _G.YOKUDO_UpdateUI_Buso then
+        _G.YOKUDO_UpdateUI_Buso(true)
+    end
+end)
 
 print("✅ AutoBuso Loaded (No Config - Auto Start ON)")
