@@ -1,5 +1,5 @@
 -- ==================================================
--- TABS (SEA2) - UPDATED LIKE SEA3
+-- TABS (SEA2) - NO CONFIG
 -- ==================================================
 
 local Y = _G.Y
@@ -87,7 +87,7 @@ end
 SelectTab(InfoTab, InfoPage)
 
 -- ==================================================
--- ⭐ INFO TAB (ដូច SEA3 - គ្មានពណ៌)
+-- ⭐ INFO TAB
 -- ==================================================
 
 -- Title
@@ -220,24 +220,20 @@ CreateRefreshButton(FruitPage, 1)
 CreateRefreshButton(BerryPage, 1)
 
 -- ==================================================
--- AUTO HOP TAB
+-- AUTO HOP TAB (NO CONFIG)
 -- ==================================================
 CreateSectionTitle(AutoHopPage, "Select Weapon for attack", 1)
 CreateWeaponDropdown(AutoHopPage, 2)
 
--- ⭐ Auto Click Attack (Smart Checkbox)
+-- ⭐ Auto Click Attack (Smart Checkbox - ប្រើ ToggleFunction)
 local clickAttack = CreateSmartCheckbox(
     AutoHopPage,
     "Auto Click Attack",
     3,
-    function(state)
-        if state and not _G.YOKUDO_AutoClickAttackEnabled then
-            _G.YOKUDO_ToggleAutoClickAttack()
-        elseif not state and _G.YOKUDO_AutoClickAttackEnabled then
-            _G.YOKUDO_ToggleAutoClickAttack()
-        end
+    function()  -- ToggleFunction
+        _G.YOKUDO_ToggleAutoClickAttack()
     end,
-    function()
+    function()  -- GetStateFunction
         return _G.YOKUDO_AutoClickAttackEnabled or false
     end
 )
@@ -248,17 +244,13 @@ end
 
 CreateSectionTitle(AutoHopPage, "Farm Boss", 4)
 
--- ⭐ Auto Darkbeard (Smart Checkbox)
+-- ⭐ Auto Darkbeard (Smart Checkbox - ប្រើ ToggleFunction)
 local darkBeard = CreateSmartCheckbox(
     AutoHopPage,
     "Auto Darkbeard",
     5,
-    function(state)
-        if state and not _G.YOKUDO_AutoDarkBeardEnabled then
-            _G.YOKUDO_ToggleAutoDarkBeard()
-        elseif not state and _G.YOKUDO_AutoDarkBeardEnabled then
-            _G.YOKUDO_ToggleAutoDarkBeard()
-        end
+    function()
+        _G.YOKUDO_ToggleAutoDarkBeard()
     end,
     function()
         return _G.YOKUDO_AutoDarkBeardEnabled or false
@@ -274,17 +266,13 @@ local hopDarkBeardFrame, hopDarkBeardCheckbox, getHopDarkBeardState = CreateChec
 
 CreateSectionTitle(AutoHopPage, "Farm Boss", 7)
 
--- ⭐ Auto Cursed Captain (Smart Checkbox)
+-- ⭐ Auto Cursed Captain (Smart Checkbox - ប្រើ ToggleFunction)
 local cursedCaptain = CreateSmartCheckbox(
     AutoHopPage,
     "Auto Cursed Captain",
     8,
-    function(state)
-        if state and not _G.YOKUDO_AutoCursedCaptainEnabled then
-            _G.YOKUDO_ToggleAutoCursedCaptain()
-        elseif not state and _G.YOKUDO_AutoCursedCaptainEnabled then
-            _G.YOKUDO_ToggleAutoCursedCaptain()
-        end
+    function()
+        _G.YOKUDO_ToggleAutoCursedCaptain()
     end,
     function()
         return _G.YOKUDO_AutoCursedCaptainEnabled or false
@@ -300,17 +288,13 @@ local hopCursedCaptainFrame, hopCursedCaptainCheckbox, getHopCursedCaptainState 
 
 CreateSectionTitle(AutoHopPage, "Farm Boss", 10)
 
--- ⭐ Auto Core (Smart Checkbox)
+-- ⭐ Auto Core (Smart Checkbox - ប្រើ ToggleFunction)
 local core = CreateSmartCheckbox(
     AutoHopPage,
     "Auto Core",
     11,
-    function(state)
-        if state and not _G.YOKUDO_AutoCoreEnabled then
-            _G.YOKUDO_ToggleAutoCore()
-        elseif not state and _G.YOKUDO_AutoCoreEnabled then
-            _G.YOKUDO_ToggleAutoCore()
-        end
+    function()
+        _G.YOKUDO_ToggleAutoCore()
     end,
     function()
         return _G.YOKUDO_AutoCoreEnabled or false
@@ -337,7 +321,7 @@ hopCursedCaptainCheckbox.MouseButton1Click:Connect(function()
 end)
 
 -- ==================================================
--- SETTING TAB
+-- SETTING TAB (NO CONFIG)
 -- ==================================================
 CreateSectionTitle(SettingPage, "Tween Settings", 1)
 CreateStopTweenButton(SettingPage, 2)
@@ -349,13 +333,13 @@ local noClipFrame, noClipCheckbox, getNoClipState = CreateCheckbox(SettingPage, 
 
 CreateSectionTitle(SettingPage, "Auto Abilities", 5)
 
--- ⭐ Auto Buso (Smart Checkbox)
+-- ⭐ Auto Buso (Smart Checkbox - ប្រើ ToggleFunction)
 local buso = CreateSmartCheckbox(
     SettingPage,
     "Auto Buso",
     6,
-    function(state)
-        _G.YOKUDO_SetBuso(state)
+    function()
+        _G.YOKUDO_ToggleAutoBuso()
     end,
     function()
         return _G.YOKUDO_BusoEnabled or false
@@ -373,17 +357,13 @@ local jumpHolder, jumpCheckbox, getJumpState, jumpTextBox, getJumpValue = Create
 -- Speed Hack (Checkbox + TextBox ដើម)
 local speedHolder, speedCheckbox, getSpeedState, speedTextBox, getSpeedValue = CreateTextBoxWithCheckbox(SettingPage, "Speed Hack", 10)
 
--- ⭐ Walk on Water (Smart Checkbox)
+-- ⭐ Walk on Water (Smart Checkbox - ប្រើ ToggleFunction)
 local walk = CreateSmartCheckbox(
     SettingPage,
     "Walk on Water",
     11,
-    function(state)
-        if state and not _G.YOKUDO_WalkEnabled then
-            _G.YOKUDO_ToggleWalkOnWater()
-        elseif not state and _G.YOKUDO_WalkEnabled then
-            _G.YOKUDO_ToggleWalkOnWater()
-        end
+    function()
+        _G.YOKUDO_ToggleWalkOnWater()
     end,
     function()
         return _G.YOKUDO_WalkEnabled or false
@@ -410,22 +390,17 @@ noClipCheckbox.MouseButton1Click:Connect(function()
 end)
 
 -- ==================================================
--- SHOP TAB (UPDATED - ដូច SEA3)
+-- SHOP TAB (NO CONFIG)
 -- ==================================================
-
 CreateSectionTitle(ShopPage, "Shop", 1)
 
--- ⭐ Auto Buy Legendary Sword (Smart Checkbox)
+-- ⭐ Auto Buy Legendary Sword (Smart Checkbox - ប្រើ ToggleFunction)
 local buySword = CreateSmartCheckbox(
     ShopPage,
     "Auto Buy Legendary Sword",
     2,
-    function(state)
-        if state and not _G.YOKUDO_AutoBuySwordEnabled then
-            _G.YOKUDO_ToggleAutoBuySword()
-        elseif not state and _G.YOKUDO_AutoBuySwordEnabled then
-            _G.YOKUDO_ToggleAutoBuySword()
-        end
+    function()
+        _G.YOKUDO_ToggleAutoBuySword()
     end,
     function()
         return _G.YOKUDO_AutoBuySwordEnabled or false
@@ -436,17 +411,13 @@ if _G.YOKUDO_UpdateUI_BuySword == nil then
     _G.YOKUDO_UpdateUI_BuySword = buySword.Update
 end
 
--- ⭐ Auto Unlock Haki Legendary (Smart Checkbox)
+-- ⭐ Auto Unlock Haki Legendary (Smart Checkbox - ប្រើ ToggleFunction)
 local unlockHaki = CreateSmartCheckbox(
     ShopPage,
     "Auto Unlock Haki Legendary",
     3,
-    function(state)
-        if state and not _G.YOKUDO_AutoUnlockHakiEnabled then
-            _G.YOKUDO_ToggleAutoUnlockHaki()
-        elseif not state and _G.YOKUDO_AutoUnlockHakiEnabled then
-            _G.YOKUDO_ToggleAutoUnlockHaki()
-        end
+    function()
+        _G.YOKUDO_ToggleAutoUnlockHaki()
     end,
     function()
         return _G.YOKUDO_AutoUnlockHakiEnabled or false
@@ -458,7 +429,7 @@ if _G.YOKUDO_UpdateUI_UnlockHaki == nil then
 end
 
 -- ==================================================
--- ⭐ JOIN SERVER WITH JOBID (DECODE + JOIN) - ដូច SEA3
+-- ⭐ JOIN SERVER WITH JOBID (DECODE + JOIN)
 -- ==================================================
 CreateSectionTitle(ShopPage, "Join Server With Jobid", 4)
 
@@ -545,7 +516,7 @@ joinButton.MouseLeave:Connect(function()
     joinButton.BackgroundColor3 = Color3.fromRGB(105, 90, 190)
 end)
 
--- ⭐ JOIN BUTTON - DECODE + JOIN (ដូច SEA3)
+-- ⭐ JOIN BUTTON - DECODE + JOIN
 joinButton.MouseButton1Click:Connect(function()
     local inputText = jobIdTextBox.Text
     if inputText and inputText ~= "" and inputText ~= "Paste Premium Jobid or Normal" then
@@ -584,4 +555,4 @@ _G.YOKUDO_SettingPage = SettingPage
 _G.YOKUDO_AutoHopPage = AutoHopPage
 _G.YOKUDO_ShopPage = ShopPage
 
-print("✅ Tabs Loaded (SEA2 - Updated like SEA3)")
+print("✅ Tabs Loaded (SEA2 - No Config)")
