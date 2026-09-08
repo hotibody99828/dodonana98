@@ -1,5 +1,5 @@
 -- ==================================================
--- CHARACTER RESPAWN HANDLER (SEA2) - WITH SET FUNCTIONS
+-- CHARACTER RESPAWN HANDLER (NO CONFIG)
 -- ==================================================
 
 local Player = _G.YOKUDO.Player
@@ -8,41 +8,41 @@ Player.OnCharacterAdded(function()
     task.wait(0.5)
     
     -- ==============================================
-    -- AUTO BOSS FEATURES (ប្រើ Set Functions)
+    -- AUTO BOSS FEATURES (ប្រើ Toggle ផ្ទាល់)
     -- ==============================================
     
     -- Auto Darkbeard
     if _G.YOKUDO_AutoDarkBeardEnabled then
-        if _G.YOKUDO_SetDarkBeard then
-            _G.YOKUDO_SetDarkBeard(true)
+        if _G.YOKUDO_ToggleAutoDarkBeard then
+            _G.YOKUDO_ToggleAutoDarkBeard()
             print("✅ Auto Darkbeard restarted")
         end
     end
     
     -- Auto Cursed Captain
     if _G.YOKUDO_AutoCursedCaptainEnabled then
-        if _G.YOKUDO_SetCursedCaptain then
-            _G.YOKUDO_SetCursedCaptain(true)
+        if _G.YOKUDO_ToggleAutoCursedCaptain then
+            _G.YOKUDO_ToggleAutoCursedCaptain()
             print("✅ Auto Cursed Captain restarted")
         end
     end
     
     -- Auto Core
     if _G.YOKUDO_AutoCoreEnabled then
-        if _G.YOKUDO_SetCore then
-            _G.YOKUDO_SetCore(true)
+        if _G.YOKUDO_ToggleAutoCore then
+            _G.YOKUDO_ToggleAutoCore()
             print("✅ Auto Core restarted")
         end
     end
     
     -- ==============================================
-    -- AUTO ABILITIES (ប្រើ Set Functions)
+    -- AUTO ABILITIES
     -- ==============================================
     
     -- Auto Buso
     if _G.YOKUDO_BusoEnabled then
-        if _G.YOKUDO_SetBuso then
-            _G.YOKUDO_SetBuso(true)
+        if _G.YOKUDO_ToggleAutoBuso then
+            _G.YOKUDO_ToggleAutoBuso()
             print("✅ Auto Buso restarted")
         end
     end
@@ -50,20 +50,19 @@ Player.OnCharacterAdded(function()
     -- Auto Ken
     if _G.YOKUDO_ObservationEnabled then
         if _G.YOKUDO_ToggleAutoKen then
-            -- Auto Ken មិនទាន់មាន Set Function ទេ
             _G.YOKUDO_ToggleAutoKen()
             print("✅ Auto Ken restarted")
         end
     end
     
     -- ==============================================
-    -- MOVEMENT HACKS (ប្រើ Set Functions)
+    -- MOVEMENT HACKS
     -- ==============================================
     
     -- Walk on Water
     if _G.YOKUDO_WalkEnabled then
-        if _G.YOKUDO_SetWalk then
-            _G.YOKUDO_SetWalk(true)
+        if _G.YOKUDO_ToggleWalkOnWater then
+            _G.YOKUDO_ToggleWalkOnWater()
             print("✅ Walk on Water restarted")
         end
     end
@@ -85,37 +84,37 @@ Player.OnCharacterAdded(function()
     end
     
     -- ==============================================
-    -- AUTO CLICK ATTACK (ប្រើ Set Functions)
+    -- AUTO CLICK ATTACK
     -- ==============================================
     if _G.YOKUDO_AutoClickAttackEnabled then
-        if _G.YOKUDO_SetClickAttack then
-            _G.YOKUDO_SetClickAttack(true)
+        if _G.YOKUDO_ToggleAutoClickAttack then
+            _G.YOKUDO_ToggleAutoClickAttack()
             print("✅ Auto Click Attack restarted")
         end
     end
     
     -- ==============================================
-    -- SHOP FEATURES (ប្រើ Set Functions)
+    -- SHOP FEATURES
     -- ==============================================
     
     -- Auto Buy Sword
     if _G.YOKUDO_AutoBuySwordEnabled then
-        if _G.YOKUDO_SetBuySword then
-            _G.YOKUDO_SetBuySword(true)
+        if _G.YOKUDO_ToggleAutoBuySword then
+            _G.YOKUDO_ToggleAutoBuySword()
             print("✅ Auto Buy Sword restarted")
         end
     end
     
     -- Auto Unlock Haki
     if _G.YOKUDO_AutoUnlockHakiEnabled then
-        if _G.YOKUDO_SetUnlockHaki then
-            _G.YOKUDO_SetUnlockHaki(true)
+        if _G.YOKUDO_ToggleAutoUnlockHaki then
+            _G.YOKUDO_ToggleAutoUnlockHaki()
             print("✅ Auto Unlock Haki restarted")
         end
     end
     
     -- ==============================================
-    -- AUTO HOP FEATURES (Restart - ប្រើ Toggle)
+    -- AUTO HOP FEATURES
     -- ==============================================
     
     -- Auto Hop Darkbeard
@@ -135,4 +134,4 @@ Player.OnCharacterAdded(function()
     end
 end)
 
-print("✅ CharacterHandler Loaded (SEA2 - Using Set Functions)")
+print("✅ CharacterHandler Loaded (No Config)")
