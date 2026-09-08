@@ -2,7 +2,7 @@
 -- YOKUDO HUB | SEA2 | [Premium] | Loader (NO CONFIG - CLEAN)
 -- ==================================================
 
-local BASE_URL = "https://raw.githubusercontent.com/hotibody99828/yokudo/main/"
+local BASE_URL = "https://raw.githubusercontent.com/hotibody99828/yokudo/dodonana98/"
 
 _G.YOKUDO_EnablePrint = false
 
