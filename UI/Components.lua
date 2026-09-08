@@ -1,5 +1,5 @@
 -- ==================================================
--- UI COMPONENTS (SEA2 - FULL VERSION + SMART CHECKBOX)
+-- UI COMPONENTS (SEA2 - FULL VERSION + SMART CHECKBOX) - NO CONFIG
 -- ==================================================
 
 local TweenService = game:GetService("TweenService")
@@ -646,7 +646,7 @@ function CreateStopTweenButton(Parent, Order)
 end
 
 -- ==================================================
--- ⭐ CREATE WEAPON DROPDOWN (UPDATED - Save to Config)
+-- ⭐ CREATE WEAPON DROPDOWN (គ្មាន Config - ប្រើ Toggle ផ្ទាល់)
 -- ==================================================
 function CreateWeaponDropdown(Parent, Order)
     local Holder = Instance.new("Frame")
@@ -756,12 +756,6 @@ function CreateWeaponDropdown(Parent, Order)
                 _G.YOKUDO_AutoEquip.SelectedType = Weapon
             end
             
-            -- ⭐ Save to Config (ភ្លាមៗ)
-            if _G.YOKUDO_UpdateConfig then
-                _G.YOKUDO_UpdateConfig("WeaponType", Weapon)
-                print("✅ Weapon Type saved to config: " .. Weapon)
-            end
-            
             -- ⭐ Equip Weapon (បើ AutoDarkBeard កំពុងដំណើរការ)
             if _G.YOKUDO_AutoDarkBeardEnabled then
                 if _G.YOKUDO_EquipWeaponFromBackpack then
@@ -808,9 +802,9 @@ function AddFeaturesSoon(Page)
 end
 
 -- ==================================================
--- ⭐ SMART CHECKBOX (កែប្រែ - Update UI ភ្លាមៗ) - FIXED
+-- ⭐ SMART CHECKBOX (គ្មាន Config - ប្រើ Toggle ផ្ទាល់)
 -- ==================================================
-function CreateSmartCheckbox(Parent, LabelText, Order, SetFunction, GetStateFunction)
+function CreateSmartCheckbox(Parent, LabelText, Order, ToggleFunction, GetStateFunction)
     local Holder = Instance.new("Frame")
     Holder.Size = UDim2.new(1, 0, 0, 32)
     Holder.BackgroundTransparency = 1
@@ -860,7 +854,7 @@ function CreateSmartCheckbox(Parent, LabelText, Order, SetFunction, GetStateFunc
         end
     end
 
-    -- ⭐ Update UI (ធ្វើភ្លាមៗ)
+    -- ⭐ Update UI
     local function UpdateUI(state)
         Enabled = state
         Check.Visible = state
@@ -871,18 +865,14 @@ function CreateSmartCheckbox(Parent, LabelText, Order, SetFunction, GetStateFunc
         end
     end
 
-    -- ⭐ Click Event (Update UI មុន រួចហៅ SetFunction)
+    -- ⭐ Click Event - Toggle ផ្ទាល់ (គ្មាន Config)
     Button.MouseButton1Click:Connect(function()
-        if SetFunction then
+        if ToggleFunction then
             local currentState = GetStateFunction and GetStateFunction() or Enabled
             local newState = not currentState
-            
-            -- ⭐ Update UI ភ្លាមៗ (មុនហៅ SetFunction)
             UpdateUI(newState)
-            
-            -- រួចហៅ SetFunction (វានឹងធ្វើការយឺតៗ)
             task.spawn(function()
-                SetFunction(newState)
+                ToggleFunction()
             end)
         end
     end)
@@ -915,75 +905,4 @@ function CreateSmartCheckbox(Parent, LabelText, Order, SetFunction, GetStateFunc
     }
 end
 
--- ==================================================
--- ⭐ WEAPON TYPE FUNCTIONS (ដូច SEA3)
--- ==================================================
-
--- ⭐ UPDATE WEAPON BUTTON (សម្រាប់ Config Load - ជាមួយ Retry)
-function _G.YOKUDO_UpdateWeaponButton(weaponType)
-    if not weaponType or weaponType == "" then
-        weaponType = "Melee"
-    end
-    
-    local function updateButton(page, type)
-        for _, child in ipairs(page:GetDescendants()) do
-            if child.Name == "WeaponButton" then
-                child.Text = type
-                print("✅ Weapon Button updated to: " .. type)
-                return true
-            end
-        end
-        return false
-    end
-    
-    -- Try to update immediately
-    if _G.YOKUDO_AutoHopPage then
-        if updateButton(_G.YOKUDO_AutoHopPage, weaponType) then
-            return
-        end
-    end
-    
-    -- If not found, retry
-    print("⚠️ WeaponButton not found or AutoHopPage not ready, will retry...")
-    task.spawn(function()
-        local maxRetry = 15
-        local retryCount = 0
-        while retryCount < maxRetry do
-            task.wait(0.2)
-            retryCount = retryCount + 1
-            
-            if _G.YOKUDO_AutoHopPage then
-                if updateButton(_G.YOKUDO_AutoHopPage, weaponType) then
-                    print("✅ Weapon Button updated to: " .. weaponType .. " (retry " .. retryCount .. ")")
-                    return
-                end
-            end
-        end
-        print("⚠️ Failed to update Weapon Button after " .. maxRetry .. " retries!")
-    end)
-end
-
--- ⭐ SET WEAPON TYPE (សម្រាប់ Config Load - មិន Equip)
-function _G.YOKUDO_SetWeaponType(weaponType)
-    if not weaponType or weaponType == "" then
-        weaponType = "Melee"
-    end
-    
-    if _G.YOKUDO_AutoEquip then
-        _G.YOKUDO_AutoEquip.SelectedType = weaponType
-    end
-    
-    -- Update UI
-    if _G.YOKUDO_UpdateWeaponButton then
-        _G.YOKUDO_UpdateWeaponButton(weaponType)
-    end
-    
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("WeaponType", weaponType)
-    end
-    
-    print("✅ Weapon Type set to: " .. weaponType .. " (UI Updated)")
-end
-
-print("✅ Components Loaded (SEA2 - Full - Weapon Config)")
+print("✅ Components Loaded (SEA2 - No Config)")
