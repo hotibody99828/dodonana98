@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO BUY LEGENDARY SWORD (ជាមួយ Config Save) - WITH SET
+-- AUTO BUY LEGENDARY SWORD (NO CONFIG)
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -56,7 +56,7 @@ local function buySwordLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (ជាមួយ Config Save)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoBuySword()
     if toggleLock then return end
@@ -96,28 +96,15 @@ function _G.YOKUDO_ToggleAutoBuySword()
         _G.YOKUDO_UpdateUI_BuySword(_G.YOKUDO_AutoBuySwordEnabled)
     end
     
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoBuySword", _G.YOKUDO_AutoBuySwordEnabled)
-    end
-    
     task.wait(0.3)
     isToggling = false
     toggleLock = false
 end
 
 -- ==================================================
--- ⭐ SET FUNCTION (សម្រាប់ ConfigManager)
--- ==================================================
-function _G.YOKUDO_SetBuySword(enabled)
-    if enabled == _G.YOKUDO_AutoBuySwordEnabled then return end
-    _G.YOKUDO_ToggleAutoBuySword()
-end
-
--- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_AutoBuySwordEnabled = _G.YOKUDO_AutoBuySwordEnabled or false
+_G.YOKUDO_AutoBuySwordEnabled = false
 
 -- ==================================================
 -- CHARACTER RESPAWN HANDLER
@@ -133,4 +120,4 @@ Player.CharacterAdded:Connect(function()
     end
 end)
 
-print("✅ AutoBuySword Loaded (Config Ready - With Set)")
+print("✅ AutoBuySword Loaded (No Config)")
