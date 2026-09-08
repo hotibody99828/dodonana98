@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO BUSO HAKI (NO CONFIG)
+-- AUTO BUSO HAKI (NO CONFIG) - START TRUE
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -12,7 +12,7 @@ local Player = Players.LocalPlayer
 -- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_BusoEnabled = false
+_G.YOKUDO_BusoEnabled = true  -- ← កែពី false មក true
 _G.YOKUDO_BusoLoopConnection = nil
 _G.YOKUDO_BusoCharConnection = nil
 
@@ -95,8 +95,20 @@ function _G.YOKUDO_ToggleAutoBuso()
 end
 
 -- ==================================================
+-- ⭐ START BUSO ON LOAD (ចាប់ផ្ដើមភ្លាមៗ)
+-- ==================================================
+task.spawn(function()
+    -- រង់ចាំ Game Loaded
+    task.wait(1)
+    if _G.YOKUDO_BusoEnabled then
+        startAutoBuso()
+        print("✅ Auto Buso started automatically")
+    end
+end)
+
+-- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_BusoEnabled = false
+_G.YOKUDO_BusoEnabled = true  -- ← កំណត់ម្ដងទៀតសម្រាប់អ្នកដទៃ
 
-print("✅ AutoBuso Loaded (No Config)")
+print("✅ AutoBuso Loaded (No Config - Auto Start ON)")
