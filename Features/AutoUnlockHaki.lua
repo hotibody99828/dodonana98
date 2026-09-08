@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO UNLOCK HAKI LEGENDARY (ជាមួយ Config Save) - WITH SET
+-- AUTO UNLOCK HAKI LEGENDARY (NO CONFIG)
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -56,7 +56,7 @@ local function unlockHakiLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (ជាមួយ Config Save)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoUnlockHaki()
     if toggleLock then
@@ -103,28 +103,15 @@ function _G.YOKUDO_ToggleAutoUnlockHaki()
         _G.YOKUDO_UpdateUI_UnlockHaki(_G.YOKUDO_AutoUnlockHakiEnabled)
     end
     
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoUnlockHaki", _G.YOKUDO_AutoUnlockHakiEnabled)
-    end
-    
     task.wait(0.3)
     isToggling = false
     toggleLock = false
 end
 
 -- ==================================================
--- ⭐ SET FUNCTION (សម្រាប់ ConfigManager)
+-- STATE
 -- ==================================================
-function _G.YOKUDO_SetUnlockHaki(enabled)
-    if enabled == _G.YOKUDO_AutoUnlockHakiEnabled then return end
-    _G.YOKUDO_ToggleAutoUnlockHaki()
-end
-
--- ==================================================
--- STATE (ប្រើ or false ដើម្បីកុំឲ្យ Reset)
--- ==================================================
-_G.YOKUDO_AutoUnlockHakiEnabled = _G.YOKUDO_AutoUnlockHakiEnabled or false
+_G.YOKUDO_AutoUnlockHakiEnabled = false
 
 -- ==================================================
 -- CHARACTER RESPAWN HANDLER
@@ -140,4 +127,4 @@ Player.CharacterAdded:Connect(function()
     end
 end)
 
-print("✅ AutoUnlockHaki Loaded (Config Ready - With Set)")
+print("✅ AutoUnlockHaki Loaded (No Config)")
