@@ -1,5 +1,5 @@
 -- ==================================================
--- YOKUDO HUB | SEA2 | [Premium] | Loader (NO BACKGROUND + ONLY %)
+-- YOKUDO HUB | SEA2 | [Premium] | Loader (NO CONFIG - CLEAN)
 -- ==================================================
 
 local BASE_URL = "https://raw.githubusercontent.com/hotibody99828/yokudo/main/"
@@ -42,7 +42,7 @@ local CoreGui = game:GetService("CoreGui")
 print("✅ Game loaded, Player: " .. Player.Name)
 
 -- ==================================================
--- ⭐ CREATE LOADING SCREEN (គ្មាន Background + តែ %)
+-- ⭐ CREATE CLEAN LOADING SCREEN (តែ Progress Bar + %)
 -- ==================================================
 local function CreateLoadingScreen()
     local LoadingGui = Instance.new("ScreenGui")
@@ -56,8 +56,8 @@ local function CreateLoadingScreen()
     -- Container
     local Container = Instance.new("Frame")
     Container.Name = "Container"
-    Container.Size = UDim2.new(0, 300, 0, 120)
-    Container.Position = UDim2.new(0.5, -150, 0.5, -60)
+    Container.Size = UDim2.new(0, 280, 0, 110)
+    Container.Position = UDim2.new(0.5, -140, 0.5, -55)
     Container.BackgroundColor3 = Color3.fromRGB(16, 17, 23)
     Container.BackgroundTransparency = 0.1
     Container.BorderSizePixel = 0
@@ -65,7 +65,7 @@ local function CreateLoadingScreen()
     Container.Parent = LoadingGui
 
     local ContainerCorner = Instance.new("UICorner")
-    ContainerCorner.CornerRadius = UDim.new(0, 16)
+    ContainerCorner.CornerRadius = UDim.new(0, 14)
     ContainerCorner.Parent = Container
 
     local ContainerBorder = Instance.new("UIStroke")
@@ -77,12 +77,12 @@ local function CreateLoadingScreen()
     -- Title
     local Title = Instance.new("TextLabel")
     Title.Name = "Title"
-    Title.Size = UDim2.new(1, -40, 0, 30)
-    Title.Position = UDim2.new(0, 20, 0, 8)
+    Title.Size = UDim2.new(1, -30, 0, 28)
+    Title.Position = UDim2.new(0, 15, 0, 8)
     Title.BackgroundTransparency = 1
     Title.Text = "YOKUDO HUB"
     Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    Title.TextSize = 22
+    Title.TextSize = 20
     Title.TextXAlignment = Enum.TextXAlignment.Center
     Title.TextYAlignment = Enum.TextYAlignment.Center
     Title.Font = Enum.Font.GothamBold
@@ -91,12 +91,12 @@ local function CreateLoadingScreen()
     -- Subtitle
     local Subtitle = Instance.new("TextLabel")
     Subtitle.Name = "Subtitle"
-    Subtitle.Size = UDim2.new(1, -40, 0, 16)
-    Subtitle.Position = UDim2.new(0, 20, 0, 38)
+    Subtitle.Size = UDim2.new(1, -30, 0, 14)
+    Subtitle.Position = UDim2.new(0, 15, 0, 36)
     Subtitle.BackgroundTransparency = 1
     Subtitle.Text = "SEA2 | [Premium]"
     Subtitle.TextColor3 = Color3.fromRGB(145, 145, 175)
-    Subtitle.TextSize = 10
+    Subtitle.TextSize = 9
     Subtitle.TextXAlignment = Enum.TextXAlignment.Center
     Subtitle.TextYAlignment = Enum.TextYAlignment.Center
     Subtitle.Font = Enum.Font.GothamMedium
@@ -105,8 +105,8 @@ local function CreateLoadingScreen()
     -- Loading Bar Background
     local BarBg = Instance.new("Frame")
     BarBg.Name = "BarBg"
-    BarBg.Size = UDim2.new(0.7, 0, 0, 5)
-    BarBg.Position = UDim2.new(0.15, 0, 0.5, 0)
+    BarBg.Size = UDim2.new(0.75, 0, 0, 4)
+    BarBg.Position = UDim2.new(0.125, 0, 0.5, 0)
     BarBg.BackgroundColor3 = Color3.fromRGB(40, 40, 55)
     BarBg.BorderSizePixel = 0
     BarBg.Parent = Container
@@ -130,12 +130,12 @@ local function CreateLoadingScreen()
     -- ⭐ Percent ONLY (គ្មាន Status Text)
     local Percent = Instance.new("TextLabel")
     Percent.Name = "Percent"
-    Percent.Size = UDim2.new(1, -40, 0, 25)
-    Percent.Position = UDim2.new(0, 20, 0.7, 0)
+    Percent.Size = UDim2.new(1, -30, 0, 22)
+    Percent.Position = UDim2.new(0, 15, 0.7, 0)
     Percent.BackgroundTransparency = 1
     Percent.Text = "0%"
     Percent.TextColor3 = Color3.fromRGB(105, 90, 190)
-    Percent.TextSize = 20
+    Percent.TextSize = 18
     Percent.TextXAlignment = Enum.TextXAlignment.Center
     Percent.TextYAlignment = Enum.TextYAlignment.Center
     Percent.Font = Enum.Font.GothamBold
@@ -214,28 +214,28 @@ end)
 -- ==================================================
 Loading.Update(10)
 loadstring(GetScript("Config/Settings.lua"))()
-Loading.Update(18)
+Loading.Update(20)
 loadstring(GetScript("Core/Services.lua"))()
-Loading.Update(25)
+Loading.Update(30)
 loadstring(GetScript("Core/Player.lua"))()
-Loading.Update(32)
+Loading.Update(40)
 loadstring(GetScript("Core/Utils.lua"))()
 
 -- ==================================================
 -- LOAD UI & TABS
 -- ==================================================
 task.spawn(function()
-    Loading.Update(40)
+    Loading.Update(50)
     loadstring(GetScript("UI/Toggle.lua"))()
-    Loading.Update(46)
-    loadstring(GetScript("UI/Main.lua"))()
-    Loading.Update(52)
-    loadstring(GetScript("UI/Components.lua"))()
     Loading.Update(58)
+    loadstring(GetScript("UI/Main.lua"))()
+    Loading.Update(65)
+    loadstring(GetScript("UI/Components.lua"))()
+    Loading.Update(72)
     loadstring(GetScript("UI/Drag.lua"))()
-    Loading.Update(64)
+    Loading.Update(80)
     loadstring(GetScript("UI/Tabs.lua"))()
-    Loading.Update(70)
+    Loading.Update(85)
     print("✅ UI & Tabs Loaded")
 end)
 
@@ -260,8 +260,7 @@ task.spawn(function()
         "WalkOnWater",
         "AutoBuso",
         "AutoKen",
-        "CharacterHandler",
-        "WeaponWatcher"
+        "CharacterHandler"
     }
     
     local total = #Features
@@ -275,7 +274,7 @@ task.spawn(function()
                 loadstring(GetScript("Features/" .. Feature .. ".lua"))()
             end)
             loaded = loaded + 1
-            local percent = 70 + (loaded / total * 25)
+            local percent = 85 + (loaded / total * 15)
             Loading.Update(percent)
         end))
     end
@@ -286,30 +285,6 @@ task.spawn(function()
     end
     
     print("✅ All Features Loaded")
-    _G.YOKUDO_FeaturesReady = true
-    Loading.Update(95)
-end)
-
--- ==================================================
--- LOAD CONFIG MANAGER
--- ==================================================
-task.spawn(function()
-    Loading.Update(96)
-    
-    while not _G.YOKUDO_FeaturesReady or not _G.YOKUDO_AutoHopPage do
-        task.wait(0.05)
-    end
-    
-    Loading.Update(97)
-    loadstring(GetScript("Config/ConfigManager.lua"))()
-    
-    while not _G.YOKUDO_ApplyConfig do
-        task.wait(0.05)
-    end
-    
-    Loading.Update(98)
-    _G.YOKUDO_ApplyConfig()
-    
     Loading.Update(100)
     
     task.wait(0.3)
