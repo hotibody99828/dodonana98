@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO BUSO HAKI (ជាមួយ Config Save) - WITH SET
+-- AUTO BUSO HAKI (NO CONFIG)
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -76,13 +76,12 @@ function stopAutoBuso()
 end
 
 -- ==================================================
--- ⭐ SET FUNCTION (សម្រាប់ ConfigManager)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
-function _G.YOKUDO_SetBuso(enabled)
-    if enabled == _G.YOKUDO_BusoEnabled then return end
+function _G.YOKUDO_ToggleAutoBuso()
+    _G.YOKUDO_BusoEnabled = not _G.YOKUDO_BusoEnabled
     
-    _G.YOKUDO_BusoEnabled = enabled
-    if enabled then
+    if _G.YOKUDO_BusoEnabled then
         startAutoBuso()
         print("✅ Auto Buso: ON")
     else
@@ -91,24 +90,13 @@ function _G.YOKUDO_SetBuso(enabled)
     end
     
     if _G.YOKUDO_UpdateUI_Buso then
-        _G.YOKUDO_UpdateUI_Buso(enabled)
-    end
-    
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoBuso", enabled)
+        _G.YOKUDO_UpdateUI_Buso(_G.YOKUDO_BusoEnabled)
     end
 end
 
 -- ==================================================
--- TOGGLE FUNCTION
+-- STATE
 -- ==================================================
-function _G.YOKUDO_ToggleAutoBuso()
-    _G.YOKUDO_SetBuso(not _G.YOKUDO_BusoEnabled)
-end
+_G.YOKUDO_BusoEnabled = false
 
--- ==================================================
--- STATE (ប្រើ or false ដើម្បីកុំឲ្យ Reset)
--- ==================================================
-_G.YOKUDO_BusoEnabled = _G.YOKUDO_BusoEnabled or false
-
-print("✅ AutoBuso Loaded (Config Ready - With Set)")
+print("✅ AutoBuso Loaded (No Config)")
