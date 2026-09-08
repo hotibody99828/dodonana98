@@ -244,23 +244,34 @@ end)
 -- ==================================================
 task.spawn(function()
     local Features = {
+        -- ===== HUB FEATURES =====
         "SpeedHack",
         "JumpHack",
         "AutoEquip",
         "AutoAttack",
+        "AutoClickAttack",
+        "WalkOnWater",
+        "AutoBuso",
+        "AutoKen",
+        "AutoUnlockHaki",
+        "JoinServer",
         "AutoDarkBeard",
         "AutoHopDarkBeard",
         "AutoCursedCaptain",
         "AutoHopCursedCaptain",
         "AutoCore",
         "AutoBuySword",
-        "AutoUnlockHaki",
-        "JoinServer",
-        "AutoClickAttack",
-        "WalkOnWater",
-        "AutoBuso",
-        "AutoKen",
-        "CharacterHandler"
+        "CharacterHandler",
+        "WeaponWatcher",
+        
+        -- ===== SERVER CHECKER FEATURES =====
+        "HakiLegendaryChecker",
+        "SwordLegendaryChecker",
+        "DarkBeardChecker",
+        "CursedCaptainChecker",
+        "CoreChecker",
+        "FruitChecker",
+        "BerryChecker"
     }
     
     local total = #Features
