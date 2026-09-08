@@ -1,5 +1,5 @@
 -- ==================================================
--- AUTO CURSED CAPTAIN (ជាមួយ Config Save) - FULL WITH SET
+-- AUTO CURSED CAPTAIN (NO CONFIG) - FULL
 -- ==================================================
 
 local Players = game:GetService("Players")
@@ -430,7 +430,7 @@ local function cursedCaptainLoop()
 end
 
 -- ==================================================
--- TOGGLE FUNCTION (ជាមួយ Config Save)
+-- TOGGLE FUNCTION (គ្មាន Config)
 -- ==================================================
 function _G.YOKUDO_ToggleAutoCursedCaptain()
     isRunning = not isRunning
@@ -484,25 +484,12 @@ function _G.YOKUDO_ToggleAutoCursedCaptain()
     if _G.YOKUDO_UpdateUI_CursedCaptain then
         _G.YOKUDO_UpdateUI_CursedCaptain(isRunning)
     end
-    
-    -- Save Config
-    if _G.YOKUDO_UpdateConfig then
-        _G.YOKUDO_UpdateConfig("AutoCursedCaptain", isRunning)
-    end
-end
-
--- ==================================================
--- ⭐ SET FUNCTION (សម្រាប់ ConfigManager)
--- ==================================================
-function _G.YOKUDO_SetCursedCaptain(enabled)
-    if enabled == isRunning then return end
-    _G.YOKUDO_ToggleAutoCursedCaptain()
 end
 
 -- ==================================================
 -- STATE
 -- ==================================================
-_G.YOKUDO_AutoCursedCaptainEnabled = _G.YOKUDO_AutoCursedCaptainEnabled or false
+_G.YOKUDO_AutoCursedCaptainEnabled = false
 
 -- ==================================================
 -- CHARACTER RESPAWN HANDLER
@@ -516,4 +503,4 @@ Player.CharacterAdded:Connect(function()
     end
 end)
 
-print("✅ AutoCursedCaptain Loaded (Config Ready - With Set)")
+print("✅ AutoCursedCaptain Loaded (No Config)")
